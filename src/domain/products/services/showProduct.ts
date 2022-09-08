@@ -14,7 +14,7 @@ export class ShowProduct {
     const product = await this.productRepository.findOne(id);
 
     if (!product) {
-      throw new AppError('Product not found', 404);
+      throw new AppError('Product not found');
     }
 
     return product;
