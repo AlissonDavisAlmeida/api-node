@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
-import { CreateUser } from '../services/createUser';
-import { ListUsers } from '../services/listUsers';
+import { Request, Response } from "express";
+import { CreateUser } from "../services/createUser";
+import { ListUsers } from "../services/listUsers";
 
 export class UserController {
   async index(request: Request, response: Response): Promise<Response> {

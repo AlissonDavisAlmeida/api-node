@@ -23,7 +23,8 @@
         "linebreak-style": "off",
         "@typescript-eslint/no-unused-vars": "warn",
         "import/prefer-default-export": "off",
-        "class-methods-use-this": "off"
-        
+        "class-methods-use-this": "off",
+        "quotes": ["warn", "double"],
+        "@typescript-eslint/quotes": ["warn", "double"]
     }
 }
