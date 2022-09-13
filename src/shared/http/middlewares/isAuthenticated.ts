@@ -15,7 +15,11 @@ export const isAuthenticated = (request: Request, response: Response, next: Next
   try {
     const decoded = verify(token, authConfig.jwt.secret);
 
-    const decodedToken = decoded;
+    const { sub } = decoded;
+
+    request.user = {
+      id: sub as string,
+    };
 
     return next();
   } catch (err: any) {
