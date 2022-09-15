@@ -1,17 +1,19 @@
-import 'reflect-metadata';
-import 'express-async-errors';
-import express, { NextFunction, Request, Response } from 'express';
-import cors from 'cors';
-import { errors } from 'celebrate';
-import { router } from './routes';
-import { AppError } from './AppError';
+import "reflect-metadata";
+import "express-async-errors";
+import express, { NextFunction, Request, Response } from "express";
+import cors from "cors";
+import { errors } from "celebrate";
+import uploadConfig from "@config/upload.config";
+import { router } from "./routes";
+import { AppError } from "./AppError";
 
-import '@shared/typeorm';
+import "@shared/typeorm";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/files", express.static(uploadConfig.directory));
 
 app.use(router);
 
@@ -24,11 +26,11 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     });
   }
   return res.status(500).json({
-    status: 'error',
-    message: 'Internal Server Error',
+    status: "error",
+    message: "Internal Server Error",
   });
 });
 
 app.listen(3000, () => {
-  console.log('Server started on port 3000!');
+  console.log("Server started on port 3000!");
 });
