@@ -10,6 +10,7 @@ interface SendForgotPasswordDTO {
 
 interface SendForgotPasswordResponse {
   message: string;
+  token: string
 }
 
 export class SendForgotPassword {
@@ -39,6 +40,7 @@ export class SendForgotPassword {
 
     return {
       message: "Token generated",
+      token: token.token,
     };
   }
 }

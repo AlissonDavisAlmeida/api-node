@@ -21,9 +21,11 @@ export class ResetPassword {
 
   constructor() {
     this.usersRepository = getCustomRepository(UserRepository);
+    this.userTokenRepository = getCustomRepository(UserTokensRepository);
   }
 
   async execute({ token, password }: ResetPasswordDTO): Promise<ResetPasswordResponse> {
+    console.log("🚀 ~ file: resetPassword.ts ~ line 27 ~ ResetPassword ~ execute ~ token", token);
     const tokenExists = await this.userTokenRepository.findByToken(token);
 
     if (!tokenExists) {
