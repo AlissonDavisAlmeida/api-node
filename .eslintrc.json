@@ -25,6 +25,7 @@
         "import/prefer-default-export": "off",
         "class-methods-use-this": "off",
         "quotes": ["warn", "double"],
-        "@typescript-eslint/quotes": ["warn", "double"]
+        "@typescript-eslint/quotes": ["warn", "double"],
+        "@typescript-eslint/naming-convention":"off"
     }
 }

@@ -1,3 +1,4 @@
+import { EtherealMail } from "@config/mail/etherealconfig";
 import { AppError } from "@shared/http/AppError";
 import { getCustomRepository } from "typeorm";
 import { UserRepository } from "../typeorm/repositories/user-repository";
@@ -36,7 +37,10 @@ export class SendForgotPassword {
       throw new AppError("Error generating token");
     }
 
-    console.log("🚀 ~ file: sendForgotPassword.ts ~ line 31 ~ SendForgotPassword ~ execute ~ token", token);
+    EtherealMail.sendMail({
+      to: email,
+      body: `Your token is: ${token.token}`,
+    });
 
     return {
       message: "Token generated",
