@@ -26,6 +26,7 @@
         "class-methods-use-this": "off",
         "quotes": ["warn", "double"],
         "@typescript-eslint/quotes": ["warn", "double"],
-        "@typescript-eslint/naming-convention":"off"
+        "@typescript-eslint/naming-convention":"off",
+        "import/no-cycle": "off"
     }
 }

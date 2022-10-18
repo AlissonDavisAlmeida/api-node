@@ -1,10 +1,11 @@
+import { OrdersProducts } from "@domain/orders/typeorm/entities/OrdersProducts";
 import {
-  Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn,
-} from 'typeorm';
+  Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn,
+} from "typeorm";
 
-@Entity('products')
+@Entity("products")
 export class Products {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn("uuid")
     id: string;
 
   @Column()
@@ -12,6 +13,11 @@ export class Products {
 
   @Column()
     price: number;
+
+  @OneToMany(() => OrdersProducts, (order_products) => order_products.product, {
+    cascade: true,
+  })
+    order_products: OrdersProducts[];
 
   @Column()
     quantity: number;

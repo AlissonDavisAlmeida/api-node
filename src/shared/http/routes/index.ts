@@ -1,4 +1,5 @@
 import { customerRoutes } from "@domain/customers/routes/customerRouters";
+import { orderRoutes } from "@domain/orders/routes/ordersRoutes";
 import { productsRouter } from "@domain/products/routes/productsRouter";
 import { passwordRouter } from "@domain/users/routes/passwordRouters";
 import { profileRouters } from "@domain/users/routes/profileRouters";
@@ -14,3 +15,4 @@ router.use("/profile", profileRouters);
 router.use("/sessions", sessionsRouter);
 router.use("/password", passwordRouter);
 router.use("/customers", customerRoutes);
+router.use("/orders", orderRoutes);
