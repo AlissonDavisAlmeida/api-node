@@ -1,18 +1,26 @@
 import "reflect-metadata";
-import "express-async-errors";
-import express, { NextFunction, Request, Response } from "express";
-import cors from "cors";
-import { errors } from "celebrate";
+import "dotenv/config";
 import uploadConfig from "@config/upload.config";
-import { router } from "./routes";
-import { AppError } from "./AppError";
-
 import "@shared/typeorm";
+import { errors } from "celebrate";
+import cors from "cors";
+import express, { NextFunction, Request, Response } from "express";
+import "express-async-errors";
+
+import rateLimiter from "@shared/http/middlewares/rateLimiter";
+
+import { pagination } from "typeorm-pagination";
+import { AppError } from "./AppError";
+import { router } from "./routes";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use(rateLimiter)
+
+app.use(pagination);
 app.use("/files", express.static(uploadConfig.directory));
 
 app.use(router);
